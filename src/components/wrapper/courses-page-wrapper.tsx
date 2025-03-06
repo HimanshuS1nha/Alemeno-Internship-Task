@@ -16,7 +16,7 @@ const CoursesPageWrapper = ({
       <Navbar />
       <div
         className={cn(
-          "px-2 md:px-10 lg:px-28 w-full h-full pb-6",
+          "px-2 md:px-10 lg:px-28 w-full min-h-[100dvh] pb-6",
           bgWhite ? "bg-white" : "bg-gray-100/70"
         )}
       >

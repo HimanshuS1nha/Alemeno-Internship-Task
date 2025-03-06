@@ -4,26 +4,21 @@ import type { CourseType } from "../../../types";
 
 const CoursesSection = ({
   courses,
-  title,
 }: {
   courses?: CourseType[];
-  title: string;
 }) => {
   return (
-    <>
-      <h1 className="text-4xl font-bold text-indigo-600">{title}</h1>
-      <div className="flex flex-wrap gap-6 justify-center">
-        {courses && courses.length > 0 ? (
-          courses.map((course) => {
-            return <CourseCard course={course} key={course.id} />;
-          })
-        ) : (
-          <p className="text-rose-600 text-center font-bold">
-            No courses to show.
-          </p>
-        )}
-      </div>
-    </>
+    <div className="flex flex-wrap gap-6 justify-center">
+      {courses && courses.length > 0 ? (
+        courses.map((course) => {
+          return <CourseCard course={course} key={course.id} />;
+        })
+      ) : (
+        <p className="text-rose-600 text-center font-bold">
+          No courses to show.
+        </p>
+      )}
+    </div>
   );
 };
 
