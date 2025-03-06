@@ -18,6 +18,7 @@ export const useUser = create<UseUserType>((set) => ({
   },
   deleteUser: () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("my-courses");
     set({ user: null });
   },
 }));

@@ -18,7 +18,7 @@ const Button = ({
   return (
     <button
       className={cn(
-        "h-10 px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-600/90 text-sm font-medium rounded-md cursor-pointer",
+        "flex justify-center items-center h-10 px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-600/90 disabled:bg-indigo-400 text-sm font-medium rounded-md cursor-pointer",
         className
       )}
       disabled={disabled}

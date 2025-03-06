@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import AllCoursesPage from "./pages/courses/all-courses-page";
@@ -9,8 +10,20 @@ import MyCoursesPage from "./pages/dashboard/my-courses-page";
 
 import AuthWrapper from "./components/wrapper/auth-wrapper";
 import CoursesPageWrapper from "./components/wrapper/courses-page-wrapper";
+import DashboardWrapper from "./components/wrapper/dashboard-wrapper";
+
+import { useUser } from "./hooks/use-user";
+import { useMyCourses } from "./hooks/use-my-courses";
 
 const App = () => {
+  const user = useUser((state) => state.user);
+  const getMyCourses = useMyCourses((state) => state.getMyCourses);
+
+  useEffect(() => {
+    if (user) {
+      getMyCourses(user.id);
+    }
+  }, [user]);
   return (
     <Routes>
       <Route
@@ -39,7 +52,14 @@ const App = () => {
         }
       />
 
-      <Route path="/my-courses" element={<MyCoursesPage />} />
+      <Route
+        path="/my-courses"
+        element={
+          <DashboardWrapper>
+            <MyCoursesPage />
+          </DashboardWrapper>
+        }
+      />
     </Routes>
   );
 };

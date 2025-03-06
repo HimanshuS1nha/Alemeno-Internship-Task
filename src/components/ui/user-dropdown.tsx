@@ -10,7 +10,7 @@ const UserDropdown = ({ isVisible }: { isVisible: boolean }) => {
   return (
     <>
       {isVisible && (
-        <div className="absolute bg-white w-[200px] rounded-lg shadow shadow-gray-300 -right-10">
+        <div className="absolute bg-white w-[200px] rounded-lg shadow shadow-gray-300 right-0 md:-right-10">
           <div className="flex flex-col p-5 border-b border-b-black">
             <p className="text-lg font-semibold">{user?.name}</p>
             <p className="text-sm text-gray-700">{user?.email}</p>

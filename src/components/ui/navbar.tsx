@@ -22,7 +22,7 @@ const Navbar = () => {
       {user ? (
         <div className="relative">
           <Button
-            className="rounded-full w-full h-full"
+            className="rounded-full p-0 size-12"
             onClick={() => setShowDropdown((prev) => !prev)}
           >
             {user.name[0]}
