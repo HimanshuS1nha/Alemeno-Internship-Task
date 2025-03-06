@@ -83,7 +83,7 @@ export const courses: CourseType[] = [
     duration: "4 weeks",
     schedule: "Monday to Friday, 3:00 PM - 4:00 PM",
     location: "Online",
-    prerequisites: ["JavaScrip"],
+    prerequisites: ["JavaScript"],
     syllabus: [
       {
         week: 1,
