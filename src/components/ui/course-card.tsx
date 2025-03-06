@@ -5,8 +5,10 @@ import type { CourseType } from "../../../types";
 
 const CourseCard = ({
   course,
+  markAsCompleted,
 }: {
-  course: CourseType;
+  course: CourseType & { completed?: number[] };
+  markAsCompleted?: boolean;
 }) => {
   return (
     <Link to={`/course/${course.id}`}>
@@ -37,6 +39,41 @@ const CourseCard = ({
               </p>
             </div>
           </div>
+
+          {markAsCompleted && (
+            <div className="flex flex-col gap-y-1">
+              <p className="text-sm font-semibold">
+                Progress :{" "}
+                {Math.ceil(
+                  (course.completed!.length / course.syllabus.length) * 100
+                )}
+                %
+              </p>
+              <div className="flex items-center">
+                <div
+                  style={{
+                    width: `${
+                      Math.ceil(
+                        course.completed!.length / course.syllabus.length
+                      ) * 100
+                    }%`,
+                  }}
+                  className="bg-indigo-600 h-1"
+                />
+                <div
+                  style={{
+                    width: `${
+                      Math.ceil(
+                        (course.syllabus.length - course.completed!.length) /
+                          course.syllabus.length
+                      ) * 100
+                    }%`,
+                  }}
+                  className="bg-gray-300 h-1"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </Link>

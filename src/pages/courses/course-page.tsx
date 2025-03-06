@@ -52,9 +52,33 @@ const CoursePage = () => {
               </div>
 
               {purchasedCourse ? (
-                <p className="text-sm text-emerald-600 font-semibold">
-                  You have already purchased this course.
-                </p>
+                purchasedCourse.completed.length ===
+                purchasedCourse.syllabus.length ? (
+                  <p className="text-sm text-emerald-600 font-semibold">
+                    You have completed this course.
+                  </p>
+                ) : (
+                  <Button
+                    onClick={() => {
+                      setMyCourses(
+                        myCourses.map((myCourse) => {
+                          if (myCourse.id === purchasedCourse.id) {
+                            return {
+                              ...myCourse,
+                              completed: purchasedCourse.syllabus.map(
+                                (syllabus) => syllabus.week
+                              ),
+                            };
+                          }
+
+                          return myCourse;
+                        })
+                      );
+                    }}
+                  >
+                    Mark as completed
+                  </Button>
+                )
               ) : (
                 <Button
                   onClick={() => {
