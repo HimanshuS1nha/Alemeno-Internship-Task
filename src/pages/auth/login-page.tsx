@@ -56,7 +56,7 @@ const LoginPage = () => {
   });
   return (
     <div className="w-full h-[100dvh] flex items-center justify-center bg-gray-100/70">
-      <div className="w-[30%] p-4 bg-white shadow-xl shadow-gray-300 flex flex-col items-center gap-y-9 rounded-xl">
+      <div className="w-[95%] sm:w-[75%] md:w-[50%] lg:w-[40%] xl:w-[30%] p-4 bg-white shadow-xl shadow-gray-300 flex flex-col items-center gap-y-9 rounded-xl">
         <div className="flex gap-x-2.5 items-center">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgvPo5heMAPJneHkLuQR-lcdz43y_RQTPSQ&s"

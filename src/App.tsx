@@ -8,12 +8,27 @@ import LoginPage from "./pages/auth/login-page";
 import MyCoursesPage from "./pages/dashboard/my-courses-page";
 
 import AuthWrapper from "./components/wrapper/auth-wrapper";
+import CoursesPageWrapper from "./components/wrapper/courses-page-wrapper";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<AllCoursesPage />} />
-      <Route path="/course/:id" element={<CoursePage />} />
+      <Route
+        path="/"
+        element={
+          <CoursesPageWrapper>
+            <AllCoursesPage />
+          </CoursesPageWrapper>
+        }
+      />
+      <Route
+        path="/course/:id"
+        element={
+          <CoursesPageWrapper>
+            <CoursePage />
+          </CoursesPageWrapper>
+        }
+      />
 
       <Route
         path="/login"
