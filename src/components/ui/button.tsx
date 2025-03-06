@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import Loader from "./loader";
+
 import { cn } from "../../libs/utils";
 
 const Button = ({
@@ -22,7 +24,7 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {children}
+      {disabled ? <Loader size="sm" /> : children}
     </button>
   );
 };
