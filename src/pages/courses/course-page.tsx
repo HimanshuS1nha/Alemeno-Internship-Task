@@ -1,14 +1,25 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Button from "../../components/ui/button";
 import AccordionItem from "../../components/ui/accordion-item";
+
+import { useUser } from "../../hooks/use-user";
+import { useMyCourses } from "../../hooks/use-my-courses";
 
 import { courses } from "../../dummy-data/courses";
 
 const CoursePage = () => {
   const { id } = useParams() as { id: string };
+  const navigate = useNavigate();
+  const user = useUser((state) => state.user);
+  const myCourses = useMyCourses((state) => state.myCourses);
+  const setMyCourses = useMyCourses((state) => state.setMyCourses);
 
   const course = courses.find((course) => course.id === parseInt(id));
+
+  const purchasedCourse = myCourses.find(
+    (myCourse) => myCourse.id === course?.id
+  );
   return (
     <>
       {course ? (
@@ -40,7 +51,26 @@ const CoursePage = () => {
                 </p>
               </div>
 
-              <Button>Buy now</Button>
+              {purchasedCourse ? (
+                <p className="text-sm text-emerald-600 font-semibold">
+                  You have already purchased this course.
+                </p>
+              ) : (
+                <Button
+                  onClick={() => {
+                    if (user) {
+                      setMyCourses([
+                        ...myCourses,
+                        { ...course, completed: [] },
+                      ]);
+                    } else {
+                      navigate("/login");
+                    }
+                  }}
+                >
+                  Buy now
+                </Button>
+              )}
             </div>
 
             <div className="w-[90%] md:w-[450px] h-[450px] rounded-lg">
@@ -106,7 +136,11 @@ const CoursePage = () => {
             <div className="flex flex-col w-[98%] md:w-[70%]">
               {course.syllabus.map((syllabus) => {
                 return (
-                  <AccordionItem key={syllabus.week} syllabus={syllabus} />
+                  <AccordionItem
+                    key={syllabus.week}
+                    syllabus={syllabus}
+                    purchasedCourse={purchasedCourse}
+                  />
                 );
               })}
             </div>

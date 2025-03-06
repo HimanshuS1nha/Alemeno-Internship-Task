@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Button from "./button";
 import UserDropdown from "./user-dropdown";
@@ -13,11 +13,13 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <nav className="flex justify-between bg-white py-2.5 px-2 lg:px-28">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgvPo5heMAPJneHkLuQR-lcdz43y_RQTPSQ&s"
-        alt="EducationHub"
-        className="size-12 rounded-full"
-      />
+      <Link to={"/"}>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgvPo5heMAPJneHkLuQR-lcdz43y_RQTPSQ&s"
+          alt="EducationHub"
+          className="size-12 rounded-full"
+        />
+      </Link>
 
       {user ? (
         <div className="relative">
