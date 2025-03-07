@@ -52,22 +52,19 @@ const CourseCard = ({
               <div className="flex items-center">
                 <div
                   style={{
-                    width: `${
-                      Math.ceil(
-                        course.completed!.length / course.syllabus.length
-                      ) * 100
-                    }%`,
+                    width: `${Math.ceil(
+                      (course.completed!.length / course.syllabus.length) * 100
+                    )}%`,
                   }}
                   className="bg-indigo-600 h-1"
                 />
                 <div
                   style={{
-                    width: `${
-                      Math.ceil(
-                        (course.syllabus.length - course.completed!.length) /
-                          course.syllabus.length
-                      ) * 100
-                    }%`,
+                    width: `${Math.ceil(
+                      ((course.syllabus.length - course.completed!.length) /
+                        course.syllabus.length) *
+                        100
+                    )}%`,
                   }}
                   className="bg-gray-300 h-1"
                 />
