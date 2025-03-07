@@ -22,6 +22,7 @@ const LoginPage = () => {
     formState: { errors },
     handleSubmit,
     reset,
+    setValue,
   } = useForm<loginValidatorType>({
     defaultValues: {
       email: "",
@@ -108,6 +109,36 @@ const LoginPage = () => {
           </div>
 
           <Button disabled={isPending}>Login</Button>
+
+          <div className="flex flex-col items-center gap-y-4">
+            <p
+              className="text-sm text-rose-600 cursor-pointer font-semibold"
+              onClick={() => {
+                setValue("email", "alice@example.com");
+                setValue("password", "12345678");
+              }}
+            >
+              Use demo credentials 1
+            </p>
+            <p
+              className="text-sm text-rose-600 cursor-pointer font-semibold"
+              onClick={() => {
+                setValue("email", "bob@example.com");
+                setValue("password", "12345678");
+              }}
+            >
+              Use demo credentials 2
+            </p>
+            <p
+              className="text-sm text-rose-600 cursor-pointer font-semibold"
+              onClick={() => {
+                setValue("email", "mary@example.com");
+                setValue("password", "12345678");
+              }}
+            >
+              Use demo credentials 3
+            </p>
+          </div>
         </form>
       </div>
     </div>
