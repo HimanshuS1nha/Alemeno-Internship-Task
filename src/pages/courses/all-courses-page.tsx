@@ -5,17 +5,25 @@ import toast from "react-hot-toast";
 import Loader from "../../components/ui/loader";
 import CoursesSection from "../../components/ui/courses-section";
 
+import { useMyCourses } from "../../hooks/use-my-courses";
+
 import { courses } from "../../dummy-data/courses";
 
 const AllCoursesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const myCourses = useMyCourses((state) => state.myCourses);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["get-courses"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(() => resolve(""), 1000));
 
-      return { courses };
+      return {
+        courses: courses.filter(
+          (course) => !myCourses.find((myCourse) => myCourse.id === course.id)
+        ),
+      };
     },
   });
   if (error) {
